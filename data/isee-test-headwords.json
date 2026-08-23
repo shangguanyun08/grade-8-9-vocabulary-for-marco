@@ -1,0 +1,1130 @@
+[
+  {
+    "word": "abdicate",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 3"
+    ]
+  },
+  {
+    "word": "abrasive",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 1"
+    ]
+  },
+  {
+    "word": "abrupt",
+    "aliases": [
+      "abruptness"
+    ],
+    "tests": [
+      "ISEE MiddleTest WTE",
+      "ISEE Mock 3"
+    ]
+  },
+  {
+    "word": "accentuate",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 3"
+    ]
+  },
+  {
+    "word": "acclimate",
+    "aliases": [
+      "acclimated"
+    ],
+    "tests": [
+      "ISEE Mock 2"
+    ]
+  },
+  {
+    "word": "acknowledge",
+    "aliases": [
+      "acknowledging"
+    ],
+    "tests": [
+      "ISEE MiddleTest WTE"
+    ]
+  },
+  {
+    "word": "acute",
+    "aliases": [
+      "acuity"
+    ],
+    "tests": [
+      "ISEE Mock 3"
+    ]
+  },
+  {
+    "word": "adversity",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 2"
+    ]
+  },
+  {
+    "word": "advise",
+    "aliases": [
+      "advising"
+    ],
+    "tests": [
+      "ISEE Mock 3"
+    ]
+  },
+  {
+    "word": "advocate",
+    "aliases": [
+      "advocating"
+    ],
+    "tests": [
+      "ISEE Mock 1"
+    ]
+  },
+  {
+    "word": "affiliate",
+    "aliases": [
+      "affiliation"
+    ],
+    "tests": [
+      "ISEE Mock 2"
+    ]
+  },
+  {
+    "word": "aggravate",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 1"
+    ]
+  },
+  {
+    "word": "agile",
+    "aliases": [],
+    "tests": [
+      "ISEE MiddleTest WTE"
+    ]
+  },
+  {
+    "word": "alleviate",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 1"
+    ]
+  },
+  {
+    "word": "allot",
+    "aliases": [
+      "allotted"
+    ],
+    "tests": [
+      "ISEE Mock 3"
+    ]
+  },
+  {
+    "word": "altruism",
+    "aliases": [
+      "altruistic"
+    ],
+    "tests": [
+      "ISEE Mock 3"
+    ]
+  },
+  {
+    "word": "ambiguous",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 1"
+    ]
+  },
+  {
+    "word": "amend",
+    "aliases": [
+      "amended"
+    ],
+    "tests": [
+      "ISEE Mock 1",
+      "ISEE Mock 2"
+    ]
+  },
+  {
+    "word": "ample",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 3"
+    ]
+  },
+  {
+    "word": "apprehensive",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 3"
+    ]
+  },
+  {
+    "word": "arbitrary",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 2"
+    ]
+  },
+  {
+    "word": "arid",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 3"
+    ]
+  },
+  {
+    "word": "aspire",
+    "aliases": [
+      "aspiration"
+    ],
+    "tests": [
+      "ISEE MiddleTest WTE",
+      "ISEE Mock 1"
+    ]
+  },
+  {
+    "word": "assemble",
+    "aliases": [
+      "assembled"
+    ],
+    "tests": [
+      "ISEE MiddleTest WTE"
+    ]
+  },
+  {
+    "word": "assert",
+    "aliases": [
+      "assertion"
+    ],
+    "tests": [
+      "ISEE Mock 3"
+    ]
+  },
+  {
+    "word": "aversion",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 1"
+    ]
+  },
+  {
+    "word": "avid",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 2"
+    ]
+  },
+  {
+    "word": "barren",
+    "aliases": [],
+    "tests": [
+      "ISEE MiddleTest WTE"
+    ]
+  },
+  {
+    "word": "bashful",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 2"
+    ]
+  },
+  {
+    "word": "belligerent",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 1"
+    ]
+  },
+  {
+    "word": "benign",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 3"
+    ]
+  },
+  {
+    "word": "bizarre",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 2"
+    ]
+  },
+  {
+    "word": "blunder",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 3"
+    ]
+  },
+  {
+    "word": "boast",
+    "aliases": [
+      "boasts"
+    ],
+    "tests": [
+      "ISEE Mock 3"
+    ]
+  },
+  {
+    "word": "callous",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 1"
+    ]
+  },
+  {
+    "word": "candor",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 2"
+    ]
+  },
+  {
+    "word": "coerce",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 1"
+    ]
+  },
+  {
+    "word": "collaborate",
+    "aliases": [
+      "collaborative"
+    ],
+    "tests": [
+      "ISEE Mock 1"
+    ]
+  },
+  {
+    "word": "condone",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 3"
+    ]
+  },
+  {
+    "word": "conform",
+    "aliases": [],
+    "tests": [
+      "ISEE MiddleTest WTE"
+    ]
+  },
+  {
+    "word": "connote",
+    "aliases": [
+      "connotation"
+    ],
+    "tests": [
+      "ISEE Mock 2"
+    ]
+  },
+  {
+    "word": "consent",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 1"
+    ]
+  },
+  {
+    "word": "controversial",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 3"
+    ]
+  },
+  {
+    "word": "copious",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 3"
+    ]
+  },
+  {
+    "word": "credible",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 3"
+    ]
+  },
+  {
+    "word": "cynical",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 1"
+    ]
+  },
+  {
+    "word": "daunt",
+    "aliases": [
+      "daunting"
+    ],
+    "tests": [
+      "ISEE Mock 2"
+    ]
+  },
+  {
+    "word": "defame",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 2"
+    ]
+  },
+  {
+    "word": "defensive",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 2"
+    ]
+  },
+  {
+    "word": "delectable",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 1"
+    ]
+  },
+  {
+    "word": "deliberate",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 2"
+    ]
+  },
+  {
+    "word": "demeanor",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 1"
+    ]
+  },
+  {
+    "word": "devastate",
+    "aliases": [
+      "devastated"
+    ],
+    "tests": [
+      "ISEE Mock 3"
+    ]
+  },
+  {
+    "word": "devious",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 1"
+    ]
+  },
+  {
+    "word": "devote",
+    "aliases": [
+      "devoted"
+    ],
+    "tests": [
+      "ISEE Mock 2"
+    ]
+  },
+  {
+    "word": "disposition",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 1"
+    ]
+  },
+  {
+    "word": "disregard",
+    "aliases": [
+      "disregarding"
+    ],
+    "tests": [
+      "ISEE Mock 1"
+    ]
+  },
+  {
+    "word": "disrupt",
+    "aliases": [
+      "disrupting"
+    ],
+    "tests": [
+      "ISEE Mock 1"
+    ]
+  },
+  {
+    "word": "distinguish",
+    "aliases": [
+      "distinguished"
+    ],
+    "tests": [
+      "ISEE Mock 1"
+    ]
+  },
+  {
+    "word": "eclectic",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 3"
+    ]
+  },
+  {
+    "word": "elusive",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 2"
+    ]
+  },
+  {
+    "word": "endanger",
+    "aliases": [
+      "endangering"
+    ],
+    "tests": [
+      "ISEE MiddleTest WTE"
+    ]
+  },
+  {
+    "word": "endeavor",
+    "aliases": [],
+    "tests": [
+      "ISEE MiddleTest WTE"
+    ]
+  },
+  {
+    "word": "enhance",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 1"
+    ]
+  },
+  {
+    "word": "episode",
+    "aliases": [],
+    "tests": [
+      "ISEE MiddleTest WTE"
+    ]
+  },
+  {
+    "word": "evade",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 1"
+    ]
+  },
+  {
+    "word": "falter",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 2"
+    ]
+  },
+  {
+    "word": "fathom",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 1"
+    ]
+  },
+  {
+    "word": "fatigue",
+    "aliases": [
+      "fatigued"
+    ],
+    "tests": [
+      "ISEE Mock 3"
+    ]
+  },
+  {
+    "word": "feasible",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 2"
+    ]
+  },
+  {
+    "word": "feeble",
+    "aliases": [
+      "feebly"
+    ],
+    "tests": [
+      "ISEE MiddleTest WTE"
+    ]
+  },
+  {
+    "word": "foreign",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 3"
+    ]
+  },
+  {
+    "word": "grievance",
+    "aliases": [
+      "grievances"
+    ],
+    "tests": [
+      "ISEE Mock 2"
+    ]
+  },
+  {
+    "word": "haphazard",
+    "aliases": [],
+    "tests": [
+      "ISEE MiddleTest WTE"
+    ]
+  },
+  {
+    "word": "heedful",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 2"
+    ]
+  },
+  {
+    "word": "hesitate",
+    "aliases": [
+      "hesitant"
+    ],
+    "tests": [
+      "ISEE Mock 3"
+    ]
+  },
+  {
+    "word": "homogeneous",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 1"
+    ]
+  },
+  {
+    "word": "impartial",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 2"
+    ]
+  },
+  {
+    "word": "impend",
+    "aliases": [
+      "impending"
+    ],
+    "tests": [
+      "ISEE Mock 3"
+    ]
+  },
+  {
+    "word": "incessant",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 2"
+    ]
+  },
+  {
+    "word": "incompetent",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 3"
+    ]
+  },
+  {
+    "word": "indispensable",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 2"
+    ]
+  },
+  {
+    "word": "inherent",
+    "aliases": [
+      "inherently"
+    ],
+    "tests": [
+      "ISEE Mock 3"
+    ]
+  },
+  {
+    "word": "insight",
+    "aliases": [],
+    "tests": [
+      "ISEE MiddleTest WTE"
+    ]
+  },
+  {
+    "word": "insolent",
+    "aliases": [
+      "insolently"
+    ],
+    "tests": [
+      "ISEE MiddleTest WTE"
+    ]
+  },
+  {
+    "word": "instigate",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 3"
+    ]
+  },
+  {
+    "word": "intimidate",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 3"
+    ]
+  },
+  {
+    "word": "intricate",
+    "aliases": [],
+    "tests": [
+      "ISEE MiddleTest WTE"
+    ]
+  },
+  {
+    "word": "inundate",
+    "aliases": [
+      "inundated"
+    ],
+    "tests": [
+      "ISEE MiddleTest WTE",
+      "ISEE Mock 1"
+    ]
+  },
+  {
+    "word": "keen",
+    "aliases": [],
+    "tests": [
+      "ISEE MiddleTest WTE"
+    ]
+  },
+  {
+    "word": "lofty",
+    "aliases": [],
+    "tests": [
+      "ISEE MiddleTest WTE"
+    ]
+  },
+  {
+    "word": "lope",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 1"
+    ]
+  },
+  {
+    "word": "lure",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 3"
+    ]
+  },
+  {
+    "word": "malleable",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 2"
+    ]
+  },
+  {
+    "word": "mediate",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 2"
+    ]
+  },
+  {
+    "word": "miserly",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 2"
+    ]
+  },
+  {
+    "word": "mock",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 2"
+    ]
+  },
+  {
+    "word": "momentary",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 1"
+    ]
+  },
+  {
+    "word": "moral",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 1"
+    ]
+  },
+  {
+    "word": "motive",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 2"
+    ]
+  },
+  {
+    "word": "muffle",
+    "aliases": [
+      "muffled"
+    ],
+    "tests": [
+      "ISEE Mock 2"
+    ]
+  },
+  {
+    "word": "noncommittal",
+    "aliases": [],
+    "tests": [
+      "ISEE MiddleTest WTE"
+    ]
+  },
+  {
+    "word": "notorious",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 2",
+      "ISEE Mock 3"
+    ]
+  },
+  {
+    "word": "oblivious",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 3"
+    ]
+  },
+  {
+    "word": "obstinate",
+    "aliases": [],
+    "tests": [
+      "ISEE MiddleTest WTE"
+    ]
+  },
+  {
+    "word": "optimistic",
+    "aliases": [],
+    "tests": [
+      "ISEE MiddleTest WTE"
+    ]
+  },
+  {
+    "word": "originate",
+    "aliases": [
+      "origin"
+    ],
+    "tests": [
+      "ISEE Mock 3"
+    ]
+  },
+  {
+    "word": "pacify",
+    "aliases": [],
+    "tests": [
+      "ISEE MiddleTest WTE"
+    ]
+  },
+  {
+    "word": "persevere",
+    "aliases": [],
+    "tests": [
+      "ISEE MiddleTest WTE",
+      "ISEE Mock 2"
+    ]
+  },
+  {
+    "word": "perspective",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 1"
+    ]
+  },
+  {
+    "word": "pertinent",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 1"
+    ]
+  },
+  {
+    "word": "pinnacle",
+    "aliases": [],
+    "tests": [
+      "ISEE MiddleTest WTE"
+    ]
+  },
+  {
+    "word": "plume",
+    "aliases": [],
+    "tests": [
+      "ISEE MiddleTest WTE"
+    ]
+  },
+  {
+    "word": "poise",
+    "aliases": [
+      "poised"
+    ],
+    "tests": [
+      "ISEE Mock 1"
+    ]
+  },
+  {
+    "word": "portray",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 3"
+    ]
+  },
+  {
+    "word": "preconceive",
+    "aliases": [
+      "preconceived",
+      "preconception"
+    ],
+    "tests": [
+      "ISEE Mock 1"
+    ]
+  },
+  {
+    "word": "presume",
+    "aliases": [],
+    "tests": [
+      "ISEE MiddleTest WTE"
+    ]
+  },
+  {
+    "word": "prevail",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 2"
+    ]
+  },
+  {
+    "word": "primary",
+    "aliases": [],
+    "tests": [
+      "ISEE MiddleTest WTE"
+    ]
+  },
+  {
+    "word": "pristine",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 3"
+    ]
+  },
+  {
+    "word": "privilege",
+    "aliases": [
+      "privileged"
+    ],
+    "tests": [
+      "ISEE Mock 2"
+    ]
+  },
+  {
+    "word": "procrastinate",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 3"
+    ]
+  },
+  {
+    "word": "prone",
+    "aliases": [],
+    "tests": [
+      "ISEE MiddleTest WTE"
+    ]
+  },
+  {
+    "word": "relinquish",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 3"
+    ]
+  },
+  {
+    "word": "reluctant",
+    "aliases": [
+      "reluctance"
+    ],
+    "tests": [
+      "ISEE MiddleTest WTE"
+    ]
+  },
+  {
+    "word": "remorseful",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 2"
+    ]
+  },
+  {
+    "word": "renown",
+    "aliases": [
+      "renowned"
+    ],
+    "tests": [
+      "ISEE Mock 2"
+    ]
+  },
+  {
+    "word": "repeal",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 3"
+    ]
+  },
+  {
+    "word": "replenish",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 2"
+    ]
+  },
+  {
+    "word": "resourceful",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 2"
+    ]
+  },
+  {
+    "word": "retain",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 3"
+    ]
+  },
+  {
+    "word": "revere",
+    "aliases": [
+      "revered"
+    ],
+    "tests": [
+      "ISEE Mock 1"
+    ]
+  },
+  {
+    "word": "scathing",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 1"
+    ]
+  },
+  {
+    "word": "sentimental",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 2"
+    ]
+  },
+  {
+    "word": "sinister",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 2"
+    ]
+  },
+  {
+    "word": "snarky",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 1"
+    ]
+  },
+  {
+    "word": "solitary",
+    "aliases": [],
+    "tests": [
+      "ISEE MiddleTest WTE"
+    ]
+  },
+  {
+    "word": "sophisticated",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 2"
+    ]
+  },
+  {
+    "word": "subside",
+    "aliases": [],
+    "tests": [
+      "ISEE MiddleTest WTE"
+    ]
+  },
+  {
+    "word": "supplement",
+    "aliases": [],
+    "tests": [
+      "ISEE MiddleTest WTE",
+      "ISEE Mock 3"
+    ]
+  },
+  {
+    "word": "tenacious",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 1"
+    ]
+  },
+  {
+    "word": "thrive",
+    "aliases": [
+      "thriving"
+    ],
+    "tests": [
+      "ISEE MiddleTest WTE"
+    ]
+  },
+  {
+    "word": "torrid",
+    "aliases": [],
+    "tests": [
+      "ISEE MiddleTest WTE"
+    ]
+  },
+  {
+    "word": "undermine",
+    "aliases": [
+      "undermined"
+    ],
+    "tests": [
+      "ISEE Mock 3"
+    ]
+  },
+  {
+    "word": "unfounded",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 1"
+    ]
+  },
+  {
+    "word": "unruly",
+    "aliases": [],
+    "tests": [
+      "ISEE MiddleTest WTE"
+    ]
+  },
+  {
+    "word": "validate",
+    "aliases": [
+      "validated"
+    ],
+    "tests": [
+      "ISEE Mock 1"
+    ]
+  },
+  {
+    "word": "willful",
+    "aliases": [],
+    "tests": [
+      "ISEE Mock 1"
+    ]
+  }
+]

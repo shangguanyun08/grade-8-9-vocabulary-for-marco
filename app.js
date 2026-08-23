@@ -4,12 +4,15 @@ const STORAGE_KEY = "marco-grade-8-9-vocabulary-checked-v1";
 const numberFormat = new Intl.NumberFormat("en-US");
 
 const elements = {
-  chapter: document.querySelector("#chapter-filter"),
+  bandFilters: document.querySelector("#band-filters"),
   checkedCount: document.querySelector("#checked-count"),
   clearFilters: document.querySelector("#clear-filters"),
   clearSearch: document.querySelector("#clear-search"),
   completion: document.querySelector("#completion"),
   emptyState: document.querySelector("#empty-state"),
+  footerTotal: document.querySelector("#footer-total"),
+  heroTotal: document.querySelector("#hero-total"),
+  listHeading: document.querySelector("#word-list-heading"),
   listTotal: document.querySelector("#list-total"),
   progressBar: document.querySelector("#progress-bar"),
   progressTotal: document.querySelector("#progress-total"),
@@ -17,16 +20,18 @@ const elements = {
   saveState: document.querySelector("#save-state"),
   search: document.querySelector("#search"),
   sortControls: document.querySelector("#sort-controls"),
+  source: document.querySelector("#source-filter"),
   statusFilters: document.querySelector("#status-filters"),
   tableShell: document.querySelector("#table-shell"),
   visibleCount: document.querySelector("#visible-count"),
 };
 
 const state = {
-  chapter: "all",
+  band: "all",
   checked: loadChecked(),
   query: "",
   sort: "rank-asc",
+  source: "all",
   status: "all",
   words: [],
 };
@@ -59,22 +64,26 @@ function setActiveButton(group, attribute, value) {
   });
 }
 
-function getGradeLevel(word) {
-  const grade8Limit = Math.ceil(state.words.length / 2);
-  return word.rank <= grade8Limit ? "Grade 8" : "Grade 9";
+function searchableText(word) {
+  return [
+    word.word,
+    word.meaning,
+    ...(word.aliases || []),
+    ...(word.sources || []),
+    ...(word.details || []),
+    word.studyBand,
+  ].join(" ").toLocaleLowerCase();
 }
 
 function getVisibleWords() {
   const query = state.query.trim().toLocaleLowerCase();
   const filtered = state.words.filter((word) => {
-    if (state.chapter !== "all" && !word.sources.includes(state.chapter)) return false;
+    if (state.source !== "all" && !word.sources.includes(state.source)) return false;
+    if (state.band !== "all" && word.studyBand !== state.band) return false;
     const checked = state.checked.has(word.id);
     if (state.status === "checked" && !checked) return false;
     if (state.status === "unchecked" && checked) return false;
-    if (!query) return true;
-    return `${word.word} ${word.meaning} ${word.sources.join(" ")} ${getGradeLevel(word)}`
-      .toLocaleLowerCase()
-      .includes(query);
+    return !query || searchableText(word).includes(query);
   });
 
   return filtered.sort((a, b) => {
@@ -109,6 +118,18 @@ function createCheckbox(word, checked) {
   return cell;
 }
 
+function sourceClass(source) {
+  if (source === "ISEE Test Samples") return "source-tested";
+  if (source === "Piqosity Middle") return "source-middle";
+  if (source === "Piqosity Upper") return "source-upper";
+  if (source === "Zozeck Grade 8–9") return "source-zozeck";
+  return "source-practice";
+}
+
+function bandClass(band) {
+  return band.toLocaleLowerCase().replaceAll(" ", "-");
+}
+
 function createRow(word) {
   const checked = state.checked.has(word.id);
   const row = document.createElement("tr");
@@ -124,29 +145,36 @@ function createRow(word) {
   const term = document.createElement("th");
   term.scope = "row";
   term.className = "word-cell";
-  term.textContent = word.word;
+  const headword = document.createElement("span");
+  headword.textContent = word.word;
+  term.append(headword);
+  if (word.aliases?.length) {
+    const aliases = document.createElement("small");
+    aliases.textContent = `Forms: ${word.aliases.join(", ")}`;
+    term.append(aliases);
+  }
 
   const meaning = document.createElement("td");
   meaning.className = "meaning-cell";
   meaning.textContent = word.meaning;
 
-  const chapters = document.createElement("td");
-  chapters.className = "chapters-cell";
+  const sources = document.createElement("td");
+  sources.className = "sources-cell";
   word.sources.forEach((source) => {
     const badge = document.createElement("span");
-    badge.textContent = source.replace("Chapter ", "Ch. ");
-    chapters.append(badge);
+    badge.className = sourceClass(source);
+    badge.textContent = source;
+    sources.append(badge);
   });
 
-  const gradeLevel = getGradeLevel(word);
-  const grade = document.createElement("td");
-  grade.className = "grade-cell";
-  const gradeBadge = document.createElement("span");
-  gradeBadge.className = gradeLevel === "Grade 8" ? "grade-eight" : "grade-nine";
-  gradeBadge.textContent = gradeLevel;
-  grade.append(gradeBadge);
+  const band = document.createElement("td");
+  band.className = "band-cell";
+  const bandBadge = document.createElement("span");
+  bandBadge.className = bandClass(word.studyBand);
+  bandBadge.textContent = word.studyBand;
+  band.append(bandBadge);
 
-  row.append(rank, term, meaning, chapters, grade);
+  row.append(rank, term, meaning, sources, band);
   return row;
 }
 
@@ -171,12 +199,14 @@ function render() {
 
 function clearFilters() {
   state.query = "";
-  state.chapter = "all";
+  state.source = "all";
   state.status = "all";
+  state.band = "all";
   elements.search.value = "";
   elements.clearSearch.hidden = true;
-  elements.chapter.value = "all";
+  elements.source.value = "all";
   setActiveButton(elements.statusFilters, "data-status", "all");
+  setActiveButton(elements.bandFilters, "data-band", "all");
   render();
 }
 
@@ -194,8 +224,8 @@ elements.clearSearch.addEventListener("click", () => {
   render();
 });
 
-elements.chapter.addEventListener("change", (event) => {
-  state.chapter = event.target.value;
+elements.source.addEventListener("change", (event) => {
+  state.source = event.target.value;
   render();
 });
 
@@ -204,6 +234,14 @@ elements.statusFilters.addEventListener("click", (event) => {
   if (!button) return;
   state.status = button.dataset.status;
   setActiveButton(elements.statusFilters, "data-status", state.status);
+  render();
+});
+
+elements.bandFilters.addEventListener("click", (event) => {
+  const button = event.target.closest("button[data-band]");
+  if (!button) return;
+  state.band = button.dataset.band;
+  setActiveButton(elements.bandFilters, "data-band", state.band);
   render();
 });
 
@@ -217,7 +255,7 @@ elements.sortControls.addEventListener("click", (event) => {
 
 elements.clearFilters.addEventListener("click", clearFilters);
 
-fetch("words.json")
+fetch("words.json?v=3")
   .then((response) => {
     if (!response.ok) throw new Error("The vocabulary data could not be loaded.");
     return response.json();
@@ -226,15 +264,19 @@ fetch("words.json")
     state.words = words;
     const validIds = new Set(words.map((word) => word.id));
     state.checked = new Set([...state.checked].filter((id) => validIds.has(id)));
-    for (let chapter = 1; chapter <= 25; chapter += 1) {
+    const sources = [...new Set(words.flatMap((word) => word.sources))];
+    sources.forEach((source) => {
       const option = document.createElement("option");
-      option.value = `Chapter ${chapter}`;
-      option.textContent = `Chapter ${chapter}`;
-      elements.chapter.append(option);
-    }
+      option.value = source;
+      option.textContent = source;
+      elements.source.append(option);
+    });
     const total = numberFormat.format(words.length);
     elements.listTotal.textContent = total;
     elements.progressTotal.textContent = total;
+    elements.heroTotal.textContent = total;
+    elements.footerTotal.textContent = total;
+    elements.listHeading.textContent = `${total} unique words & phrases`;
     updateProgress();
     render();
   })
@@ -242,4 +284,3 @@ fetch("words.json")
     elements.tableShell.setAttribute("aria-busy", "false");
     elements.rows.innerHTML = `<tr><td class="loading-cell error-cell" colspan="6">${error.message}</td></tr>`;
   });
-

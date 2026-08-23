@@ -4,26 +4,26 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#0d3035" />
-    <meta name="description" content="Marco's complete Zozeck Grade 8–9 vocabulary list, ranked from easy to hard with searchable meanings and saved progress." />
-    <title>Grade 8–9 Vocabulary for Marco</title>
-    <link rel="stylesheet" href="styles.css" />
-    <script src="app.js" defer></script>
+    <meta name="description" content="Marco's complete ISEE vocabulary library: the original Zozeck Grade 8–9 collection, Piqosity Middle and Upper headwords, tested words, and Score 9 practice vocabulary." />
+    <title>Marco's Complete ISEE Vocabulary</title>
+    <link rel="stylesheet" href="styles.css?v=3" />
+    <script src="app.js?v=3" defer></script>
   </head>
   <body>
     <main>
       <section class="hero">
         <div class="hero-inner">
           <div class="hero-copy">
-            <p class="eyebrow"><span aria-hidden="true">✦</span> Marco's Grade 8–9 vocabulary</p>
-            <h1>Grade 8–9.<br /><em>For Marco.</em></h1>
-            <p class="hero-description">Every word and phrase from the full Zozeck Grade 8–9 list, gathered into one place and ranked from familiar to challenging.</p>
-            <p class="coverage">2,410 source entries <span>•</span> Chapters 1–25</p>
+            <p class="eyebrow"><span aria-hidden="true">✦</span> Marco's complete ISEE vocabulary</p>
+            <h1>Build the words.<br /><em>Reach for 9.</em></h1>
+            <p class="hero-description">The complete original Grade 8–9 collection, expanded with Middle and Upper ISEE lists, words found in Marco's tests, and carefully selected practice vocabulary.</p>
+            <p class="coverage"><strong id="hero-total">—</strong> unique entries <span>•</span> 7 source collections</p>
           </div>
 
           <aside class="progress-card" aria-label="Vocabulary progress">
             <div class="progress-topline"><span>YOUR PROGRESS</span><strong id="completion">0%</strong></div>
             <div class="progress-track" aria-hidden="true"><span id="progress-bar" style="width: 0%"></span></div>
-            <p><strong id="checked-count">0</strong> of <span id="progress-total">1,920</span> entries checked</p>
+            <p><strong id="checked-count">0</strong> of <span id="progress-total">—</span> entries checked</p>
             <div class="save-state save-state-ready" id="save-state" role="status"><span aria-hidden="true"></span>Saved in this browser</div>
           </aside>
         </div>
@@ -32,24 +32,24 @@
       <section class="library" aria-labelledby="word-list-heading">
         <div class="library-heading">
           <div>
-            <p class="section-kicker">THE COMPLETE LIST</p>
-            <h2 id="word-list-heading">1,920 unique words &amp; phrases</h2>
+            <p class="section-kicker">THE EXPANDED LIBRARY</p>
+            <h2 id="word-list-heading">Loading the complete list…</h2>
           </div>
-          <p>Rank 1 is the easiest. Each rank stays fixed while you search, filter, or sort.</p>
+          <p>Rank 1 is the most familiar. Use the source and study-band filters to focus each session.</p>
         </div>
 
         <div class="controls">
           <label class="search-control">
             <span class="sr-only">Filter words</span>
             <span class="search-icon" aria-hidden="true">⌕</span>
-            <input id="search" type="search" placeholder="Filter by word, meaning, chapter, or grade…" autocomplete="off" />
+            <input id="search" type="search" placeholder="Filter by word, form, meaning, source, or test…" autocomplete="off" />
             <button id="clear-search" type="button" aria-label="Clear filter" hidden>×</button>
           </label>
 
           <label class="control-block select-control">
-            <span class="control-label">CHAPTER</span>
-            <select id="chapter-filter">
-              <option value="all">All chapters</option>
+            <span class="control-label">SOURCE</span>
+            <select id="source-filter">
+              <option value="all">All sources</option>
             </select>
           </label>
 
@@ -63,8 +63,20 @@
           </div>
         </div>
 
+        <div class="band-row">
+          <span class="control-label">STUDY BAND</span>
+          <div class="button-group band-filters" id="band-filters" aria-label="Filter by study band">
+            <button type="button" class="active" data-band="all" aria-pressed="true">All</button>
+            <button type="button" data-band="Tested" aria-pressed="false">Tested</button>
+            <button type="button" data-band="Middle Core" aria-pressed="false">Middle Core</button>
+            <button type="button" data-band="Upper Stretch" aria-pressed="false">Upper Stretch</button>
+            <button type="button" data-band="Score 9 Practice" aria-pressed="false">Score 9</button>
+            <button type="button" data-band="Zozeck Foundation" aria-pressed="false">Zozeck</button>
+          </div>
+        </div>
+
         <div class="sort-row">
-          <p>Showing <strong id="visible-count">0</strong> of <span id="list-total">1,920</span></p>
+          <p>Showing <strong id="visible-count">0</strong> of <span id="list-total">—</span></p>
           <div class="sort-controls" id="sort-controls" aria-label="Sort word list">
             <span>Sort</span>
             <button type="button" class="active" data-sort="rank-asc" aria-pressed="true">Easy → hard</button>
@@ -80,10 +92,10 @@
               <tr>
                 <th scope="col" class="check-column">Check</th>
                 <th scope="col" class="rank-column">Rank</th>
-                <th scope="col" class="word-column">Word / Phrase</th>
+                <th scope="col" class="word-column">Word / Family</th>
                 <th scope="col">Meaning</th>
-                <th scope="col" class="chapters-column">Chapter</th>
-                <th scope="col" class="grade-column">Grade Level</th>
+                <th scope="col" class="sources-column">Sources</th>
+                <th scope="col" class="band-column">Study Band</th>
               </tr>
             </thead>
             <tbody id="word-rows">
@@ -101,16 +113,15 @@
 
         <div class="method-note">
           <span aria-hidden="true">i</span>
-          <p><strong>About the ranking and grade levels</strong> Difficulty is estimated from general English frequency: familiar words appear first and rarer words later. The ranked list is divided evenly, with ranks 1–960 labeled Grade 8 and ranks 961–1,920 labeled Grade 9. Meanings and chapter labels come from the Zozeck Grade 8–9 list.</p>
+          <p><strong>How this library was assembled</strong> All 1,920 original Zozeck entries and meanings are preserved. Piqosity Middle and Upper headwords are included with independently generated WordNet-based definitions, alongside 148 tested word families and vocabulary selected from Marco's practice banks. Difficulty rank uses general English frequency; it is a study aid, not an official ERB grade classification. Sources: <a href="https://www.piqosity.com/isee-middle-level-vocabulary-list/">Piqosity Middle</a> and <a href="https://www.piqosity.com/isee-upper-level-vocabulary-list/">Piqosity Upper</a>.</p>
         </div>
         <noscript><p class="noscript-note">JavaScript is required for search, sorting, filters, and the checklist.</p></noscript>
       </section>
 
       <footer>
-        <p>Grade 8–9 Vocabulary for Marco</p>
-        <span>1,920 unique entries • 25 chapters</span>
+        <p>Marco's Complete ISEE Vocabulary</p>
+        <span><strong id="footer-total">—</strong> unique entries • original list preserved</span>
       </footer>
     </main>
   </body>
 </html>
-

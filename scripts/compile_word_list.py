@@ -20,7 +20,8 @@ except ImportError:  # Keep the checked-in frequency values usable offline.
     zipf_frequency = None
 
 SOURCE = SITE_DIR / "data" / "zozeck-grade-8-9-raw.json"
-OUTPUT = SITE_DIR / "words.json"
+OUTPUT = SITE_DIR / "data" / "zozeck-original-words.json"
+LEGACY_OUTPUT = SITE_DIR / "words.json"
 
 
 def clean_text(value: Any) -> str:
@@ -64,10 +65,11 @@ raw: list[dict[str, Any]] = json.loads(SOURCE.read_text(encoding="utf-8"))
 raw.sort(key=lambda item: int(item["sourceIndex"]))
 
 previous_frequencies: dict[str, float] = {}
-if OUTPUT.exists():
+frequency_source = OUTPUT if OUTPUT.exists() else LEGACY_OUTPUT
+if frequency_source.exists():
     previous_frequencies = {
         item["id"]: float(item["frequency"])
-        for item in json.loads(OUTPUT.read_text(encoding="utf-8"))
+        for item in json.loads(frequency_source.read_text(encoding="utf-8"))
     }
 
 frequency_overrides = {
