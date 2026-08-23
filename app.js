@@ -2,6 +2,7 @@
 
 const STORAGE_KEY = "marco-grade-8-9-vocabulary-checked-v1";
 const numberFormat = new Intl.NumberFormat("en-US");
+let onlineSync = null;
 
 const elements = {
   checkedCount: document.querySelector("#checked-count"),
@@ -48,9 +49,11 @@ function loadChecked() {
 
 function saveChecked() {
   try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify([...state.checked]));
+    const checked = [...state.checked];
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(checked));
+    onlineSync?.push(checked);
     elements.saveState.className = "save-state save-state-ready";
-    elements.saveState.lastChild.textContent = "Saved in this browser";
+    elements.saveState.lastChild.textContent = "Saved online";
   } catch {
     elements.saveState.className = "save-state save-state-error";
     elements.saveState.lastChild.textContent = "Browser saving unavailable";
@@ -283,8 +286,24 @@ fetch("words.json?v=4")
     elements.listHeading.textContent = `${total} unique words & phrases`;
     updateProgress();
     render();
+    onlineSync = window.MarcoOnlineSync?.create({
+      appId: "grade-8-9-vocabulary-for-marco",
+      studentName: "Marco",
+      validate: (value) => Array.isArray(value),
+      score: (value) => value.length,
+      onRemote: (value) => {
+        state.checked = new Set(value.filter((id) => validIds.has(id)));
+        localStorage.setItem(STORAGE_KEY, JSON.stringify([...state.checked]));
+        elements.saveState.className = "save-state save-state-ready";
+        elements.saveState.lastChild.textContent = "Saved online";
+        updateProgress();
+        render();
+      },
+    }) || null;
+    onlineSync?.start([...state.checked]);
   })
   .catch((error) => {
     elements.tableShell.setAttribute("aria-busy", "false");
     elements.rows.innerHTML = `<tr><td class="loading-cell error-cell" colspan="6">${error.message}</td></tr>`;
   });
+
