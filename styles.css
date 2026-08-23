@@ -451,7 +451,7 @@ select:focus-visible {
 
 table {
   width: 100%;
-  min-width: 940px;
+  min-width: 1060px;
   border-spacing: 0;
   border-collapse: separate;
   table-layout: fixed;
@@ -487,6 +487,11 @@ thead th {
 
 .chapters-column {
   width: 160px;
+}
+
+.grade-column {
+  width: 120px;
+  text-align: center;
 }
 
 .check-column {
@@ -601,6 +606,32 @@ tbody tr:last-child th {
   font-size: 0.65rem;
   font-weight: 800;
   white-space: nowrap;
+}
+
+.grade-cell {
+  text-align: center;
+}
+
+.grade-cell span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 24px;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 0.65rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.grade-cell .grade-eight {
+  background: #e4eee7;
+  color: #3f6d59;
+}
+
+.grade-cell .grade-nine {
+  background: #fff0ce;
+  color: #946c1b;
 }
 
 .check-cell {
@@ -852,3 +883,4 @@ footer p {
     transition-duration: 0.01ms !important;
   }
 }
+
