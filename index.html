@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0d3035" />
+    <meta name="description" content="Marco's complete Zozeck Grade 8–9 vocabulary list, ranked from easy to hard with searchable meanings and saved progress." />
+    <title>Grade 8–9 Vocabulary for Marco</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <section class="hero">
+        <div class="hero-inner">
+          <div class="hero-copy">
+            <p class="eyebrow"><span aria-hidden="true">✦</span> Marco's Grade 8–9 vocabulary</p>
+            <h1>Grade 8–9.<br /><em>For Marco.</em></h1>
+            <p class="hero-description">Every word and phrase from the full Zozeck Grade 8–9 list, gathered into one place and ranked from familiar to challenging.</p>
+            <p class="coverage">2,410 source entries <span>•</span> Chapters 1–25</p>
+          </div>
+
+          <aside class="progress-card" aria-label="Vocabulary progress">
+            <div class="progress-topline"><span>YOUR PROGRESS</span><strong id="completion">0%</strong></div>
+            <div class="progress-track" aria-hidden="true"><span id="progress-bar" style="width: 0%"></span></div>
+            <p><strong id="checked-count">0</strong> of <span id="progress-total">1,920</span> entries checked</p>
+            <div class="save-state save-state-ready" id="save-state" role="status"><span aria-hidden="true"></span>Saved in this browser</div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="library" aria-labelledby="word-list-heading">
+        <div class="library-heading">
+          <div>
+            <p class="section-kicker">THE COMPLETE LIST</p>
+            <h2 id="word-list-heading">1,920 unique words &amp; phrases</h2>
+          </div>
+          <p>Rank 1 is the easiest. Each rank stays fixed while you search, filter, or sort.</p>
+        </div>
+
+        <div class="controls">
+          <label class="search-control">
+            <span class="sr-only">Filter words</span>
+            <span class="search-icon" aria-hidden="true">⌕</span>
+            <input id="search" type="search" placeholder="Filter by word, meaning, or chapter…" autocomplete="off" />
+            <button id="clear-search" type="button" aria-label="Clear filter" hidden>×</button>
+          </label>
+
+          <label class="control-block select-control">
+            <span class="control-label">CHAPTER</span>
+            <select id="chapter-filter">
+              <option value="all">All chapters</option>
+            </select>
+          </label>
+
+          <div class="control-block">
+            <span class="control-label">SHOW</span>
+            <div class="button-group" id="status-filters" aria-label="Filter by checked status">
+              <button type="button" class="active" data-status="all" aria-pressed="true">All</button>
+              <button type="button" data-status="unchecked" aria-pressed="false">Unchecked</button>
+              <button type="button" data-status="checked" aria-pressed="false">Checked</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="sort-row">
+          <p>Showing <strong id="visible-count">0</strong> of <span id="list-total">1,920</span></p>
+          <div class="sort-controls" id="sort-controls" aria-label="Sort word list">
+            <span>Sort</span>
+            <button type="button" class="active" data-sort="rank-asc" aria-pressed="true">Easy → hard</button>
+            <button type="button" data-sort="rank-desc" aria-pressed="false">Hard → easy</button>
+            <button type="button" data-sort="az" aria-pressed="false">A → Z</button>
+            <button type="button" data-sort="za" aria-pressed="false">Z → A</button>
+          </div>
+        </div>
+
+        <div class="table-shell" aria-live="polite" aria-busy="true" id="table-shell">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" class="check-column">Check</th>
+                <th scope="col" class="rank-column">Rank</th>
+                <th scope="col" class="word-column">Word / Phrase</th>
+                <th scope="col">Meaning</th>
+                <th scope="col" class="chapters-column">Chapter</th>
+              </tr>
+            </thead>
+            <tbody id="word-rows">
+              <tr><td class="loading-cell" colspan="5">Loading the complete list…</td></tr>
+            </tbody>
+          </table>
+
+          <div class="empty-state" id="empty-state" hidden>
+            <span aria-hidden="true">⌕</span>
+            <h3>No words found</h3>
+            <p>Try a different search or filter.</p>
+            <button type="button" id="clear-filters">Clear filters</button>
+          </div>
+        </div>
+
+        <div class="method-note">
+          <span aria-hidden="true">i</span>
+          <p><strong>About the ranking</strong> Difficulty is estimated from general English frequency: familiar words appear first and rarer words later. Meanings and chapter labels come from the Zozeck Grade 8–9 list.</p>
+        </div>
+        <noscript><p class="noscript-note">JavaScript is required for search, sorting, filters, and the checklist.</p></noscript>
+      </section>
+
+      <footer>
+        <p>Grade 8–9 Vocabulary for Marco</p>
+        <span>1,920 unique entries • 25 chapters</span>
+      </footer>
+    </main>
+  </body>
+</html>
