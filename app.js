@@ -59,6 +59,11 @@ function setActiveButton(group, attribute, value) {
   });
 }
 
+function getGradeLevel(word) {
+  const grade8Limit = Math.ceil(state.words.length / 2);
+  return word.rank <= grade8Limit ? "Grade 8" : "Grade 9";
+}
+
 function getVisibleWords() {
   const query = state.query.trim().toLocaleLowerCase();
   const filtered = state.words.filter((word) => {
@@ -67,7 +72,9 @@ function getVisibleWords() {
     if (state.status === "checked" && !checked) return false;
     if (state.status === "unchecked" && checked) return false;
     if (!query) return true;
-    return `${word.word} ${word.meaning} ${word.sources.join(" ")}`.toLocaleLowerCase().includes(query);
+    return `${word.word} ${word.meaning} ${word.sources.join(" ")} ${getGradeLevel(word)}`
+      .toLocaleLowerCase()
+      .includes(query);
   });
 
   return filtered.sort((a, b) => {
@@ -131,7 +138,15 @@ function createRow(word) {
     chapters.append(badge);
   });
 
-  row.append(rank, term, meaning, chapters);
+  const gradeLevel = getGradeLevel(word);
+  const grade = document.createElement("td");
+  grade.className = "grade-cell";
+  const gradeBadge = document.createElement("span");
+  gradeBadge.className = gradeLevel === "Grade 8" ? "grade-eight" : "grade-nine";
+  gradeBadge.textContent = gradeLevel;
+  grade.append(gradeBadge);
+
+  row.append(rank, term, meaning, chapters, grade);
   return row;
 }
 
@@ -225,5 +240,6 @@ fetch("words.json")
   })
   .catch((error) => {
     elements.tableShell.setAttribute("aria-busy", "false");
-    elements.rows.innerHTML = `<tr><td class="loading-cell error-cell" colspan="5">${error.message}</td></tr>`;
+    elements.rows.innerHTML = `<tr><td class="loading-cell error-cell" colspan="6">${error.message}</td></tr>`;
   });
+
