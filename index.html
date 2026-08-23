@@ -42,7 +42,7 @@
           <label class="search-control">
             <span class="sr-only">Filter words</span>
             <span class="search-icon" aria-hidden="true">⌕</span>
-            <input id="search" type="search" placeholder="Filter by word, meaning, or chapter…" autocomplete="off" />
+            <input id="search" type="search" placeholder="Filter by word, meaning, chapter, or grade…" autocomplete="off" />
             <button id="clear-search" type="button" aria-label="Clear filter" hidden>×</button>
           </label>
 
@@ -83,10 +83,11 @@
                 <th scope="col" class="word-column">Word / Phrase</th>
                 <th scope="col">Meaning</th>
                 <th scope="col" class="chapters-column">Chapter</th>
+                <th scope="col" class="grade-column">Grade Level</th>
               </tr>
             </thead>
             <tbody id="word-rows">
-              <tr><td class="loading-cell" colspan="5">Loading the complete list…</td></tr>
+              <tr><td class="loading-cell" colspan="6">Loading the complete list…</td></tr>
             </tbody>
           </table>
 
@@ -100,7 +101,7 @@
 
         <div class="method-note">
           <span aria-hidden="true">i</span>
-          <p><strong>About the ranking</strong> Difficulty is estimated from general English frequency: familiar words appear first and rarer words later. Meanings and chapter labels come from the Zozeck Grade 8–9 list.</p>
+          <p><strong>About the ranking and grade levels</strong> Difficulty is estimated from general English frequency: familiar words appear first and rarer words later. The ranked list is divided evenly, with ranks 1–960 labeled Grade 8 and ranks 961–1,920 labeled Grade 9. Meanings and chapter labels come from the Zozeck Grade 8–9 list.</p>
         </div>
         <noscript><p class="noscript-note">JavaScript is required for search, sorting, filters, and the checklist.</p></noscript>
       </section>
@@ -112,3 +113,4 @@
     </main>
   </body>
 </html>
+
