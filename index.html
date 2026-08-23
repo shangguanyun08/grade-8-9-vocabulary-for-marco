@@ -4,10 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#0d3035" />
-    <meta name="description" content="Marco's complete ISEE vocabulary library: the original Zozeck Grade 8–9 collection, Piqosity Middle and Upper headwords, tested words, and Score 9 practice vocabulary." />
+    <meta name="description" content="Marco's focused ISEE Middle vocabulary library: the 1,920 original Zozeck entries, Piqosity Middle headwords, tested words, and curated Score 9 vocabulary." />
     <title>Marco's Complete ISEE Vocabulary</title>
-    <link rel="stylesheet" href="styles.css?v=3" />
-    <script src="app.js?v=3" defer></script>
+    <link rel="stylesheet" href="styles.css?v=4" />
+    <script src="app.js?v=4" defer></script>
   </head>
   <body>
     <main>
@@ -16,8 +16,8 @@
           <div class="hero-copy">
             <p class="eyebrow"><span aria-hidden="true">✦</span> Marco's complete ISEE vocabulary</p>
             <h1>Build the words.<br /><em>Reach for 9.</em></h1>
-            <p class="hero-description">The complete original Grade 8–9 collection, expanded with Middle and Upper ISEE lists, words found in Marco's tests, and carefully selected practice vocabulary.</p>
-            <p class="coverage"><strong id="hero-total">—</strong> unique entries <span>•</span> 7 source collections</p>
+            <p class="hero-description">The 1,920 original entries, expanded with the Piqosity Middle list, words found in Marco's tests, and carefully selected Score 9 vocabulary.</p>
+            <p class="coverage"><strong id="hero-total">—</strong> unique entries <span>•</span> <strong id="hero-source-total">—</strong> source collections</p>
           </div>
 
           <aside class="progress-card" aria-label="Vocabulary progress">
@@ -35,7 +35,7 @@
             <p class="section-kicker">THE EXPANDED LIBRARY</p>
             <h2 id="word-list-heading">Loading the complete list…</h2>
           </div>
-          <p>Rank 1 is the most familiar. Use the source and study-band filters to focus each session.</p>
+          <p>Rank 1 is the most familiar. Use the source and higher-difficulty filters to focus each session.</p>
         </div>
 
         <div class="controls">
@@ -63,15 +63,13 @@
           </div>
         </div>
 
-        <div class="band-row">
-          <span class="control-label">STUDY BAND</span>
-          <div class="button-group band-filters" id="band-filters" aria-label="Filter by study band">
-            <button type="button" class="active" data-band="all" aria-pressed="true">All</button>
-            <button type="button" data-band="Tested" aria-pressed="false">Tested</button>
-            <button type="button" data-band="Middle Core" aria-pressed="false">Middle Core</button>
-            <button type="button" data-band="Upper Stretch" aria-pressed="false">Upper Stretch</button>
-            <button type="button" data-band="Score 9 Practice" aria-pressed="false">Score 9</button>
-            <button type="button" data-band="Zozeck Foundation" aria-pressed="false">Zozeck</button>
+        <div class="difficulty-row">
+          <span class="control-label">HIGHER DIFFICULTY</span>
+          <div class="button-group difficulty-filters" id="difficulty-filters" aria-label="Filter for higher-difficulty vocabulary">
+            <button type="button" class="active" data-difficulty="all" aria-pressed="true">All</button>
+            <button type="button" data-difficulty="challenging" aria-pressed="false">Challenging+</button>
+            <button type="button" data-difficulty="advanced" aria-pressed="false">Advanced+</button>
+            <button type="button" data-difficulty="rarest" aria-pressed="false">Rarest</button>
           </div>
         </div>
 
@@ -95,7 +93,7 @@
                 <th scope="col" class="word-column">Word / Family</th>
                 <th scope="col">Meaning</th>
                 <th scope="col" class="sources-column">Sources</th>
-                <th scope="col" class="band-column">Study Band</th>
+                <th scope="col" class="difficulty-column">Difficulty</th>
               </tr>
             </thead>
             <tbody id="word-rows">
@@ -113,7 +111,7 @@
 
         <div class="method-note">
           <span aria-hidden="true">i</span>
-          <p><strong>How this library was assembled</strong> All 1,920 original Zozeck entries and meanings are preserved. Piqosity Middle and Upper headwords are included with independently generated WordNet-based definitions, alongside 148 tested word families and vocabulary selected from Marco's practice banks. Difficulty rank uses general English frequency; it is a study aid, not an official ERB grade classification. Sources: <a href="https://www.piqosity.com/isee-middle-level-vocabulary-list/">Piqosity Middle</a> and <a href="https://www.piqosity.com/isee-upper-level-vocabulary-list/">Piqosity Upper</a>.</p>
+          <p><strong>How this library was assembled</strong> All 1,920 original Zozeck entries and meanings are preserved as “Original Zozeck Entries.” Piqosity Middle headwords are included with independently generated WordNet-based definitions, alongside 148 tested word families and 130 curated Score 9 candidates. Difficulty uses general English frequency: Familiar (4.5+), Developing (3.5–4.49), Challenging (2.8–3.49), Advanced (2.0–2.79), and Rarest (below 2.0). It is a study aid, not an official ERB grade classification. Source: <a href="https://www.piqosity.com/isee-middle-level-vocabulary-list/">Piqosity Middle</a>.</p>
         </div>
         <noscript><p class="noscript-note">JavaScript is required for search, sorting, filters, and the checklist.</p></noscript>
       </section>

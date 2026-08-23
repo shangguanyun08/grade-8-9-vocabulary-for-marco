@@ -19,10 +19,6 @@ LISTS = {
         f"https://www.piqosity.com/publications/isee-middle-level-vocabulary-list/group-{group}/"
         for group in range(1, 36)
     ],
-    "Piqosity Upper": [
-        f"https://www.piqosity.com/isee-vocabulary/group-{group}/"
-        for group in range(1, 41)
-    ],
 }
 
 HEADING_PATTERN = re.compile(

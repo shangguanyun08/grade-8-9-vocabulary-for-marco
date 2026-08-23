@@ -32,19 +32,15 @@ except ImportError as error:
 ORIGINAL = SITE_DIR / "data" / "zozeck-original-words.json"
 PIQOSITY = SITE_DIR / "data" / "piqosity-headwords.json"
 TEST_WORDS = SITE_DIR / "data" / "isee-test-headwords.json"
-PRACTICE = SITE_DIR / "data" / "practice-headwords.json"
 CURATED = SITE_DIR / "data" / "curated-score-9-headwords.json"
 OUTPUT = SITE_DIR / "words.json"
 STATS_OUTPUT = SITE_DIR / "data" / "build-stats.json"
 
 SOURCE_ORDER = [
+    "Original Zozeck Entries",
     "ISEE Test Samples",
     "Piqosity Middle",
-    "Piqosity Upper",
-    "Marco Hard Practice",
-    "Marco Word Mastery",
     "Curated Score 9",
-    "Zozeck Grade 8–9",
 ]
 
 POS_NAMES = {
@@ -173,7 +169,7 @@ for item in load(ORIGINAL):
         "word": item["word"],
         "meaning": item["meaning"],
         "aliases": [],
-        "sources": ["Zozeck Grade 8–9"],
+        "sources": ["Original Zozeck Entries"],
         "details": list(item.get("sources", [])),
     }
 
@@ -201,20 +197,6 @@ for item in load(TEST_WORDS):
             record["aliases"].append(alias)
 
 
-skipped_practice: list[str] = []
-for item in load(PRACTICE):
-    source_word = normalize(item["word"])
-    corrected_word = SPELLING_CORRECTIONS.get(source_word, source_word)
-    record = ensure_record(corrected_word)
-    if record is None:
-        skipped_practice.append(item["word"])
-        continue
-    if source_word != corrected_word and source_word not in record["aliases"]:
-        record["aliases"].append(source_word)
-    for source in item["sources"]:
-        add_source(record, source)
-
-
 skipped_curated: list[str] = []
 for item in load(CURATED):
     record = ensure_record(item["word"])
@@ -224,17 +206,17 @@ for item in load(CURATED):
     add_source(record, item["source"])
 
 
-def study_band(record: dict[str, Any]) -> str:
-    sources = set(record["sources"])
-    if "ISEE Test Samples" in sources:
-        return "Tested"
-    if "Piqosity Middle" in sources:
-        return "Middle Core"
-    if "Piqosity Upper" in sources:
-        return "Upper Stretch"
-    if sources & {"Marco Hard Practice", "Marco Word Mastery", "Curated Score 9"}:
-        return "Score 9 Practice"
-    return "Zozeck Foundation"
+def difficulty(frequency: float) -> tuple[str, int]:
+    """Return a transparent frequency-based difficulty tier."""
+    if frequency >= 4.5:
+        return "Familiar", 1
+    if frequency >= 3.5:
+        return "Developing", 2
+    if frequency >= 2.8:
+        return "Challenging", 3
+    if frequency >= 2.0:
+        return "Advanced", 4
+    return "Rarest", 5
 
 
 ranked: list[dict[str, Any]] = []
@@ -242,7 +224,7 @@ for record in records.values():
     record["sources"].sort(key=lambda value: SOURCE_ORDER.index(value))
     record["aliases"].sort()
     record["frequency"] = round(zipf_frequency(ranking_term(record["word"]), "en"), 3)
-    record["studyBand"] = study_band(record)
+    record["difficulty"], record["difficultyTier"] = difficulty(record["frequency"])
     ranked.append(record)
 
 ranked.sort(
@@ -266,16 +248,15 @@ source_counts = {
     source: sum(source in record["sources"] for record in ranked)
     for source in SOURCE_ORDER
 }
-band_counts = {
-    band: sum(record["studyBand"] == band for record in ranked)
-    for band in ["Tested", "Middle Core", "Upper Stretch", "Score 9 Practice", "Zozeck Foundation"]
+difficulty_counts = {
+    difficulty_name: sum(record["difficulty"] == difficulty_name for record in ranked)
+    for difficulty_name in ["Familiar", "Developing", "Challenging", "Advanced", "Rarest"]
 }
 stats = {
     "total": len(ranked),
     "original": len(load(ORIGINAL)),
     "sourceCounts": source_counts,
-    "bandCounts": band_counts,
-    "skippedPractice": sorted(skipped_practice),
+    "difficultyCounts": difficulty_counts,
     "skippedCurated": sorted(skipped_curated),
 }
 STATS_OUTPUT.write_text(

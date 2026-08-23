@@ -1,16 +1,12 @@
-"""Build checked-in headword sources from Marco's tests and practice banks."""
+"""Build checked-in headword sources from Marco's tests and curated additions."""
 
 from __future__ import annotations
 
 import json
-import re
-from collections import defaultdict
 from pathlib import Path
 
 
 SITE_DIR = Path(__file__).resolve().parents[1]
-WORKSPACE_DIR = SITE_DIR.parent
-
 TESTS = {
     "ISEE MiddleTest WTE": [
         "reluctance", "solitary", "keen", "abruptness", "feebly", "unruly",
@@ -125,37 +121,10 @@ write_json(
     sorted(test_records.values(), key=lambda item: str(item["word"])),
 )
 
-practice_sources = {
-    "Marco Hard Practice": WORKSPACE_DIR / "marco-isee-hard-practice" / "data" / "questions.js",
-    "Marco Word Mastery": WORKSPACE_DIR / "isee-word-mastery" / "data" / "questions.js",
-}
-practice_words: dict[str, set[str]] = defaultdict(set)
-single_word = re.compile(r"^[A-Za-z][A-Za-z'\u2019\u2010-\u2015-]*$")
-
-for source, path in practice_sources.items():
-    script = path.read_text(encoding="utf-8")
-    script = re.sub(r"^\s*export\s+const\s+questionBank\s*=\s*", "", script)
-    script = re.sub(r";\s*$", "", script)
-    bank = json.loads(script)
-    for question in bank["questions"]:
-        values = [choice["text"] for choice in question["choices"]]
-        if question["type"] == "synonym":
-            values.append(question["prompt"])
-        for value in values:
-            value = normalize(value)
-            if single_word.fullmatch(value) and len(value) >= 3:
-                practice_words[value].add(source)
-
-practice_records = [
-    {"word": word, "sources": sorted(sources)}
-    for word, sources in sorted(practice_words.items())
-]
-write_json(SITE_DIR / "data" / "practice-headwords.json", practice_records)
 write_json(
     SITE_DIR / "data" / "curated-score-9-headwords.json",
     [{"word": normalize(word), "source": "Curated Score 9"} for word in CURATED_SCORE_9],
 )
 
 print(f"Wrote {len(test_records)} tested word families.")
-print(f"Wrote {len(practice_records)} practice-bank headwords.")
 print(f"Wrote {len(CURATED_SCORE_9)} curated Score 9 candidates.")

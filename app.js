@@ -4,14 +4,15 @@ const STORAGE_KEY = "marco-grade-8-9-vocabulary-checked-v1";
 const numberFormat = new Intl.NumberFormat("en-US");
 
 const elements = {
-  bandFilters: document.querySelector("#band-filters"),
   checkedCount: document.querySelector("#checked-count"),
   clearFilters: document.querySelector("#clear-filters"),
   clearSearch: document.querySelector("#clear-search"),
   completion: document.querySelector("#completion"),
+  difficultyFilters: document.querySelector("#difficulty-filters"),
   emptyState: document.querySelector("#empty-state"),
   footerTotal: document.querySelector("#footer-total"),
   heroTotal: document.querySelector("#hero-total"),
+  heroSourceTotal: document.querySelector("#hero-source-total"),
   listHeading: document.querySelector("#word-list-heading"),
   listTotal: document.querySelector("#list-total"),
   progressBar: document.querySelector("#progress-bar"),
@@ -27,8 +28,8 @@ const elements = {
 };
 
 const state = {
-  band: "all",
   checked: loadChecked(),
+  difficulty: "all",
   query: "",
   sort: "rank-asc",
   source: "all",
@@ -71,7 +72,7 @@ function searchableText(word) {
     ...(word.aliases || []),
     ...(word.sources || []),
     ...(word.details || []),
-    word.studyBand,
+    word.difficulty,
   ].join(" ").toLocaleLowerCase();
 }
 
@@ -79,7 +80,8 @@ function getVisibleWords() {
   const query = state.query.trim().toLocaleLowerCase();
   const filtered = state.words.filter((word) => {
     if (state.source !== "all" && !word.sources.includes(state.source)) return false;
-    if (state.band !== "all" && word.studyBand !== state.band) return false;
+    const minimumTier = { all: 0, challenging: 3, advanced: 4, rarest: 5 }[state.difficulty];
+    if (word.difficultyTier < minimumTier) return false;
     const checked = state.checked.has(word.id);
     if (state.status === "checked" && !checked) return false;
     if (state.status === "unchecked" && checked) return false;
@@ -121,13 +123,12 @@ function createCheckbox(word, checked) {
 function sourceClass(source) {
   if (source === "ISEE Test Samples") return "source-tested";
   if (source === "Piqosity Middle") return "source-middle";
-  if (source === "Piqosity Upper") return "source-upper";
-  if (source === "Zozeck Grade 8–9") return "source-zozeck";
-  return "source-practice";
+  if (source === "Original Zozeck Entries") return "source-zozeck";
+  return "source-curated";
 }
 
-function bandClass(band) {
-  return band.toLocaleLowerCase().replaceAll(" ", "-");
+function difficultyClass(difficulty) {
+  return `difficulty-${difficulty.toLocaleLowerCase()}`;
 }
 
 function createRow(word) {
@@ -167,14 +168,14 @@ function createRow(word) {
     sources.append(badge);
   });
 
-  const band = document.createElement("td");
-  band.className = "band-cell";
-  const bandBadge = document.createElement("span");
-  bandBadge.className = bandClass(word.studyBand);
-  bandBadge.textContent = word.studyBand;
-  band.append(bandBadge);
+  const difficulty = document.createElement("td");
+  difficulty.className = "difficulty-cell";
+  const difficultyBadge = document.createElement("span");
+  difficultyBadge.className = difficultyClass(word.difficulty);
+  difficultyBadge.textContent = word.difficulty;
+  difficulty.append(difficultyBadge);
 
-  row.append(rank, term, meaning, sources, band);
+  row.append(rank, term, meaning, sources, difficulty);
   return row;
 }
 
@@ -201,12 +202,12 @@ function clearFilters() {
   state.query = "";
   state.source = "all";
   state.status = "all";
-  state.band = "all";
+  state.difficulty = "all";
   elements.search.value = "";
   elements.clearSearch.hidden = true;
   elements.source.value = "all";
   setActiveButton(elements.statusFilters, "data-status", "all");
-  setActiveButton(elements.bandFilters, "data-band", "all");
+  setActiveButton(elements.difficultyFilters, "data-difficulty", "all");
   render();
 }
 
@@ -237,11 +238,11 @@ elements.statusFilters.addEventListener("click", (event) => {
   render();
 });
 
-elements.bandFilters.addEventListener("click", (event) => {
-  const button = event.target.closest("button[data-band]");
+elements.difficultyFilters.addEventListener("click", (event) => {
+  const button = event.target.closest("button[data-difficulty]");
   if (!button) return;
-  state.band = button.dataset.band;
-  setActiveButton(elements.bandFilters, "data-band", state.band);
+  state.difficulty = button.dataset.difficulty;
+  setActiveButton(elements.difficultyFilters, "data-difficulty", state.difficulty);
   render();
 });
 
@@ -255,7 +256,7 @@ elements.sortControls.addEventListener("click", (event) => {
 
 elements.clearFilters.addEventListener("click", clearFilters);
 
-fetch("words.json?v=3")
+fetch("words.json?v=4")
   .then((response) => {
     if (!response.ok) throw new Error("The vocabulary data could not be loaded.");
     return response.json();
@@ -264,7 +265,9 @@ fetch("words.json?v=3")
     state.words = words;
     const validIds = new Set(words.map((word) => word.id));
     state.checked = new Set([...state.checked].filter((id) => validIds.has(id)));
-    const sources = [...new Set(words.flatMap((word) => word.sources))];
+    const sourceOrder = ["Original Zozeck Entries", "Piqosity Middle", "ISEE Test Samples", "Curated Score 9"];
+    const sources = [...new Set(words.flatMap((word) => word.sources))]
+      .sort((a, b) => sourceOrder.indexOf(a) - sourceOrder.indexOf(b));
     sources.forEach((source) => {
       const option = document.createElement("option");
       option.value = source;
@@ -275,6 +278,7 @@ fetch("words.json?v=3")
     elements.listTotal.textContent = total;
     elements.progressTotal.textContent = total;
     elements.heroTotal.textContent = total;
+    elements.heroSourceTotal.textContent = numberFormat.format(sources.length);
     elements.footerTotal.textContent = total;
     elements.listHeading.textContent = `${total} unique words & phrases`;
     updateProgress();

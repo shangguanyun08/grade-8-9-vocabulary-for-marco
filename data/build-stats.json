@@ -1,26 +1,18 @@
 {
-  "total": 5097,
+  "total": 2962,
   "original": 1920,
   "sourceCounts": {
+    "Original Zozeck Entries": 1920,
     "ISEE Test Samples": 148,
     "Piqosity Middle": 1009,
-    "Piqosity Upper": 1199,
-    "Marco Hard Practice": 653,
-    "Marco Word Mastery": 1278,
-    "Curated Score 9": 130,
-    "Zozeck Grade 8–9": 1920
+    "Curated Score 9": 130
   },
-  "bandCounts": {
-    "Tested": 148,
-    "Middle Core": 949,
-    "Upper Stretch": 994,
-    "Score 9 Practice": 1451,
-    "Zozeck Foundation": 1555
+  "difficultyCounts": {
+    "Familiar": 744,
+    "Developing": 1346,
+    "Challenging": 650,
+    "Advanced": 191,
+    "Rarest": 31
   },
-  "skippedPractice": [
-    "although",
-    "because",
-    "divinate"
-  ],
   "skippedCurated": []
 }
